@@ -45,7 +45,7 @@ class ProjectController extends Controller
             'resource_ids.*' => 'required|exists:resources,id',
         ]);
 
-        // Upload thumbnail jika ada
+        
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
             $thumbnailPath = $request->file('thumbnail')

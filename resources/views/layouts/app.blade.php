@@ -57,7 +57,7 @@
     </style>
 </head>
 
-<body class="bg-gray-50/100 text-gray-800">
+<body class="bg-gray-50 text-gray-800">
     <div class="h-screen flex flex-col">
         <header class="backdrop-blur-lg sticky top-0 z-10 shadow-sm">
 
@@ -67,8 +67,7 @@
                         <div class="p-2 bg-primary-500 rounded-lg">
                             <i class="fas fa-chart-line text-white text-xl"></i>
                         </div>
-                        <h1 class="text-2xl font-bold text-primary-700">Woka<span
-                                class="text-blue-500">Porto</span>
+                        <h1 class="text-2xl font-bold text-primary-700">Woka<span class="text-blue-500">Porto</span>
                         </h1>
                     </div>
 
@@ -85,7 +84,7 @@
                         <div class="relative">
                             <button class="flex items-center space-x-2">
                                 <div
-                                    class="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-bold">
+                                    class="w-10 h-10 bg-linier-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-bold">
                                     JD
                                 </div>
                                 <span class="hidden md:inline font-medium">John Doe</span>
@@ -104,33 +103,32 @@
                     <ul class="space-y-2">
                         <li>
                             <a href="{{ route('admin.dashboard') }}"
-                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.dashboard*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
+                                class="flex font-semibold items-center space-x-3 p-3 hover:bg-gray-100 rounded-2xl {{ request()->routeIs('admin.dashboard*') ? 'bg-white/20 backdrop-blur-lg rounded-xl shadow-lg text-blue-600 border border-white/30' : '' }}">
                                 <i class="fas fa-home"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('admin.resource.index') }}"
-                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.resource*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
+                                class="flex font-semibold items-center space-x-3 p-3 hover:bg-gray-100 rounded-2xl {{ request()->routeIs('admin.resource*') ? 'bg-white/20 backdrop-blur-lg rounded-xl shadow-lg text-blue-600 border border-white/30' : '' }}">
                                 <i class="fa-brands fa-buffer fa-lg"></i>
                                 <span>Kelola Resource</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('admin.layanan.index') }}"
-                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.layanan*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
+                                class="flex font-semibold items-center space-x-3 p-3 hover:bg-gray-100 rounded-2xl {{ request()->routeIs('admin.layanan*') ? 'bg-white/20 backdrop-blur-lg rounded-xl shadow-lg text-blue-600 border border-white/30' : '' }}">
                                 <i class="fa-solid fa-hands-bound"></i>
                                 <span>Kelola Layanan</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('admin.project.index') }}"
-                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.project*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
+                                class="flex font-semibold items-center space-x-3 p-3 hover:bg-gray-100 rounded-2xl {{ request()->routeIs('admin.project*') ? 'bg-white/20 backdrop-blur-lg rounded-xl shadow-lg text-blue-600 border border-white/30' : '' }}">
                                 <i class="fa-solid fa-diagram-project"></i>
                                 <span>Kelola Project</span>
                             </a>
                         </li>
-
                     </ul>
 
                     <h2 class="text-lg font-semibold text-gray-500 mb-4 mt-10">ANALYTICS</h2>
@@ -150,12 +148,10 @@
                         </li>
                     </ul>
                 </nav>
-
-                
             </aside>
 
             <button id="mobile-menu-toggle"
-                class="lg:hidden fixed bottom-6 right-6 z-20 bg-primary-500 text-white p-4 rounded-full shadow-lg">
+                class="lg:hidden fixed bottom-6 right-6 z-20 bg-primary-500 text-black p-4 rounded-full shadow-lg">
                 <i class="fas fa-bars text-xl"></i>
             </button>
 
@@ -164,7 +160,7 @@
             </main>
         </div>
 
-        
+
     </div>
 
     <script>

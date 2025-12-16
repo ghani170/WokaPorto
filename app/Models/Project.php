@@ -22,7 +22,7 @@ class Project extends Model
 
     public function resources()
     {
-        return $this->belongsToMany(Resource::class, 'project_resource');
+        return $this->belongsToMany(Resource::class, 'project_resources');
     }
 
 }
