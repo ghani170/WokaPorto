@@ -104,16 +104,30 @@
                     <ul class="space-y-2">
                         <li>
                             <a href="{{ route('admin.dashboard') }}"
-                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.dashboard*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md' : '' }}">
+                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.dashboard*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
                                 <i class="fas fa-home"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('admin.resource.index') }}"
+                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.resource*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
+                                <i class="fa-brands fa-buffer fa-lg"></i>
+                                <span>Kelola Resource</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.layanan.index') }}"
+                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.layanan*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
+                                <i class="fa-solid fa-hands-bound"></i>
+                                <span>Kelola Layanan</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('admin.project.index') }}"
-                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.project*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md' : '' }}">
+                                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 rounded-xl {{ request()->routeIs('admin.project*') ? 'bg-gray-50 backdrop-blur-md rounded-xl shadow-md text-blue-600' : '' }}">
                                 <i class="fa-solid fa-diagram-project"></i>
-                                <span>Project</span>
+                                <span>Kelola Project</span>
                             </a>
                         </li>
 
