@@ -7,7 +7,7 @@
     <title>Detail Proyek | E-commerce Fashion Kustom - WokaProject</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -52,92 +52,113 @@
             </div>
         </div>
     </header>
-        <section class="py-1 lg:py-1">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+    <section class="py-1 lg:py-1">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-                    <div class="lg:col-span-2 space-y-12">
+                <div class="lg:col-span-2 space-y-12">
 
-                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
-                            <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}"
-                                class="w-full h-full object-cover" class="rounded-xl shadow-lg w-full h-auto">
-                        </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+                        <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}"
+                            class="w-full h-full object-cover" class="rounded-xl shadow-lg w-full h-auto">
+                    </div>
 
-                        <div>
-                            <h2 class="text-3xl font-extrabold text-gray-900 mb-4 border-b-2 border-primary/50 pb-2">
-                                Tantangan & Tujuan</h2>
-                            <p class="text-lg text-gray-600 mb-6">
-                                Klien menghadapi kesulitan dalam mengelola inventaris produk fashion yang cepat berganti
-                                dengan platform lama yang lambat dan tidak responsif.
-                                Tujuannya adalah membangun platform e-commerce baru yang **cepat, mudah digunakan (UX
-                                intuitif),** dan memiliki sistem manajemen gudang dan diskon yang terintegrasi.
-                            </p>
-                            <ul class="space-y-3 text-gray-700">
-                                <li class="flex items-start"><i
-                                        class="fas fa-times-circle text-red-500 mt-1 mr-3 flex-shrink-0"></i> Masalah:
-                                    Tingkat *bounce rate* tinggi pada checkout.</li>
-                                <li class="flex items-start"><i
-                                        class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i> Tujuan:
-                                    Meningkatkan konversi penjualan sebesar 20%.</li>
-                                <li class="flex items-start"><i
-                                        class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i> Tujuan:
-                                    Waktu pemuatan halaman di bawah 2 detik.</li>
-                            </ul>
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-4 border-b-2 border-primary/50 pb-2">
+                            Deskripsi</h2>
+                        <p class="text-lg text-gray-600 mb-6">
+                            {{ $project->description }}
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-1 space-y-8">
+
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-secondary">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center"><i
+                                class="fas fa-info-circle mr-3 text-secondary"></i> Ringkasan Proyek</h3>
+                        <ul class="space-y-4 text-gray-700">
+                            <li>
+                                <span class="font-semibold text-gray-900">Layanan:</span>
+                                {{ $project->layanan->nama_layanan }}
+                            </li>
+
+                            <li>
+                                <span class="font-semibold text-gray-900">Status:</span>
+                                {{ ucfirst($project->status) }}
+                            </li>
+
+                            @if($project->link_project)
+                                <li>
+                                    <a href="{{ $project->link_project }}" target="_blank"
+                                        class="text-primary hover:text-secondary font-semibold transition flex items-center mt-2">
+                                        Kunjungi Website
+                                        <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-primary">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center"><i
+                                class="fas fa-tools mr-3 text-primary"></i>Teknologi</h3>
+                        <div class="flex flex-wrap gap-3">
+                            @foreach($project->resources as $resource)
+                                <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold">
+                                    {{ $resource->name_resource }}
+                                </span>
+                            @endforeach
                         </div>
 
                     </div>
 
-                    <div class="lg:col-span-1 space-y-8">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-secondary">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center"><i
-                                    class="fas fa-info-circle mr-3 text-secondary"></i> Ringkasan Proyek</h3>
-                            <ul class="space-y-4 text-gray-700">
-                                <li><span class="font-semibold text-gray-900">Industri:</span> Retail Fashion</li>
-                                <li><span class="font-semibold text-gray-900">Layanan:</span> Pengembangan Web & UI/UX</li>
-                                <li><span class="font-semibold text-gray-900">Durasi:</span> 5 Bulan</li>
-                                <li><span class="font-semibold text-gray-900">Status:</span> Live & Dalam Perawatan</li>
-                                <li>
-                                    <a href="https://www.example.com" target="_blank"
-                                        class="text-primary hover:text-secondary font-semibold transition flex items-center mt-2">
-                                        Kunjungi Website <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
 
-                        <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-primary">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center"><i
-                                    class="fas fa-tools mr-3 text-primary"></i> Tumpukan Teknologi</h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span
-                                    class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium border border-gray-200"><i
-                                        class="fab fa-laravel mr-2"></i> Laravel (Backend)</span>
-                                <span
-                                    class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium border border-gray-200"><i
-                                        class="fab fa-vuejs mr-2"></i> Vue.js (Frontend)</span>
-                                <span
-                                    class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium border border-gray-200"><i
-                                        class="fas fa-server mr-2"></i> AWS (Hosting)</span>
-                                <span
-                                    class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium border border-gray-200"><i
-                                        class="fas fa-database mr-2"></i> PostgreSQL</span>
-                                <span
-                                    class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium border border-gray-200"><i
-                                        class="fab fa-figma mr-2"></i> Figma (Desain)</span>
-                            </div>
-                        </div>
-
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white">
+                        <span class="text-[#f59e0b]">Woka</span>Project
+                    </a>
+                    <p class="text-gray-400 mt-2 max-w-md">
+                        Perusahaan pengembangan solusi digital terdepan di Indonesia.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-12">
+                    <div>
+                        <h4 class="font-bold mb-4">Tautan Cepat</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Beranda</a></li>
+                            <li><a href="#tentang" class="text-gray-400 hover:text-white transition">Tentang Kami</a></li>
+                            <li><a href="#layanan" class="text-gray-400 hover:text-white transition">Layanan</a></li>
+                            <li><a href="#portofolio" class="text-gray-400 hover:text-white transition">Portofolio</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold mb-4">Layanan</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Web Development</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Mobile App</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">UI/UX Design</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Konsultasi IT</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
-
-
-    <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-            <p>&copy; 2023 WokaProject. Dibuat dengan <i class="fas fa-heart text-red-500 mx-1"></i> dan Tailwind CSS.
-            </p>
+            
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 NamaPerusahaan. Semua hak dilindungi undang-undang.</p>
+            </div>
         </div>
     </footer>
 

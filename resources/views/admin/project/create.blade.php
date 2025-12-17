@@ -82,7 +82,7 @@
                     + Tambah Resource
                 </button>
 
-                @error('resource_ids[]')
+                @error('resource_ids')
                     <small class="text-red-600 mt-1 block">{{ $message }}</small>
                 @enderror
             </div>

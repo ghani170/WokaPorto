@@ -164,7 +164,7 @@
                             </p>
                             <span
                                 class="inline-block bg-[#3b82f6]/10 text-[#3b82f6] px-3 py-1 rounded-full text-sm font-medium">
-                                Web Development
+                                {{ $p->layanan->nama_layanan }}
                             </span>
                             <a href="{{ route('show.portofolio', $p->id) }}"
                                 class="inline-block  text-[#3b82f6] px-3 py-1 text-sm font-medium hover:text-blue-700 cursor-pointer float-right">
