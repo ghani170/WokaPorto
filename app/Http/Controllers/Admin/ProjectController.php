@@ -46,21 +46,18 @@ class ProjectController extends Controller
             'resource_ids.*' => 'required|exists:resources,id',
         ]);
 
-        // VALIDASI DUPLIKAT RESOURCE (SEBELUM SIMPAN)
         if (count($request->resource_ids) !== count(array_unique($request->resource_ids))) {
             return back()
                 ->withErrors(['resource_ids' => 'Resource tidak boleh sama'])
                 ->withInput();
         }
 
-        // Upload thumbnail
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
             $thumbnailPath = $request->file('thumbnail')
                 ->store('projects', 'public');
         }
 
-        // Simpan project
         $project = Project::create([
             'title' => $request->title,
             'link_project' => $request->link_project,
@@ -70,7 +67,6 @@ class ProjectController extends Controller
             'layanan_id' => $request->layanan_id,
         ]);
 
-        // Bersihkan & simpan resource
         $resourceIds = array_unique(array_filter($request->resource_ids));
 
         $project->resources()->attach($resourceIds);
@@ -115,45 +111,34 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'layanan_id' => 'required|exists:layanans,id',
+            'status' => 'required|in:active,expired',
             'resource_ids' => 'required|array|min:1',
-            'resource_ids.*' => 'required|exists:resources,id',
-        ]);
+            'resource_ids.*' => 'required|exists:resources,id|distinct',
+        ],
+        [
+            'resource_ids.*.distinct' => 'Resource tidak boleh sama',
+        ]
+        );
 
-        // CEGAH RESOURCE DUPLIKAT
-        if (count($request->resource_ids) !== count(array_unique($request->resource_ids))) {
-            return back()
-                ->withErrors(['resource_ids' => 'Resource tidak boleh sama'])
-                ->withInput();
-        }
-
-        // THUMBNAIL BARU?
         if ($request->hasFile('thumbnail')) {
-
-            // hapus thumbnail lama
-            if ($project->thumbnail) {
-                Storage::disk('public')->delete($project->thumbnail);
-            }
-
             $project->thumbnail = $request->file('thumbnail')
                 ->store('projects', 'public');
         }
 
-        // UPDATE DATA PROJECT
         $project->update([
             'title' => $request->title,
             'link_project' => $request->link_project,
             'description' => $request->description,
-            'status' => $project->status,
             'layanan_id' => $request->layanan_id,
         ]);
 
-        // SYNC RESOURCE (replace total)
-        $project->resources()->sync(array_unique($request->resource_ids));
+        $project->resources()->sync($request->resource_ids);
 
         return redirect()
             ->route('admin.project.index')
             ->with('success', 'Project berhasil diperbarui');
     }
+
 
     /**
      * Remove the specified resource from storage.

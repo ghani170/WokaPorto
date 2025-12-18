@@ -2,10 +2,10 @@
 @section('title', 'Beranda - WokaProject')
 @section('content')
     <!-- Hero Section -->
-    <section class="pt-24 pb-16 md:pt-32 md:pb-24 p-10 bg-gradient-to-r from-blue-50 to-white">
+    <section id="beranda" class="pt-24 pb-16 md:pt-32 md:pb-24 p-10 bg-gradient-to-r from-blue-50 to-white">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-12 md:mb-0">
+                <div data-aos="fade-right" class="md:w-1/2 mb-12 md:mb-0">
                     <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
                         Solusi Digital <span class="text-[#3b82f6]">Inovatif</span> untuk Bisnis Anda
                     </h1>
@@ -20,7 +20,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
+                <div data-aos="fade-left" class="md:w-1/2 flex justify-center">
                     <div class="relative">
                         <div class="w-80 h-80 bg-gradient-to-r from-primary to-secondary rounded-full opacity-20"></div>
                         <div
@@ -39,7 +39,7 @@
     <!-- Tentang Kami -->
     <section id="tentang" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div data-aos="fade-up" class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tentang Kami</h2>
                 <div class="w-24 h-1 bg-[#3b82f6] mx-auto mb-6"></div>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -49,11 +49,11 @@
             </div>
 
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-12 md:mb-0">
+                <div data-aos="fade-right" class="md:w-1/2 mb-12 md:mb-0">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                         alt="Tentang Kami" class="rounded-xl shadow-lg w-full h-auto">
                 </div>
-                <div class="md:w-1/2 md:pl-12">
+                <div data-aos="fade-left" class="md:w-1/2 md:pl-12">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Mengapa Memilih Kami?</h3>
                     <div class="space-y-6">
                         <div class="flex items-start">
@@ -97,7 +97,7 @@
     <!-- Layanan -->
     <section id="layanan" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div data-aos="fade-up" class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Layanan Kami</h2>
                 <div class="w-24 h-1 bg-[#3b82f6] mx-auto mb-6"></div>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -107,7 +107,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <!-- Layanan 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div data-aos="fade-left" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                     <div class="bg-[#3b82f6]/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-code text-[#3b82f6] text-2xl"></i>
                     </div>
@@ -122,7 +122,7 @@
 
 
                 <!-- Layanan 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div data-aos="fade-right" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                     <div class="bg-[#3b82f6]/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-paint-brush text-[#3b82f6] text-2xl"></i>
                     </div>
@@ -141,7 +141,7 @@
     <!-- Portofolio -->
     <section id="portofolio" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div data-aos="fade-up" class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Portofolio Kami</h2>
                 <div class="w-24 h-1 bg-[#3b82f6] mx-auto mb-6"></div>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -149,7 +149,7 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Proyek 1 -->
                 @foreach ($project as $p)
                     <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
@@ -175,7 +175,7 @@
                 @endforeach
             </div>
     </section>
-    <div class="text-center mt-[-20px]">
+    <div data-aos="fade-right" class="text-center mt-[-20px]">
         <a href="#" class="inline-flex items-center text-[#3b82f6] font-medium hover:text-[#1e40af] transition">
             Lihat Semua Proyek <i class="fas fa-arrow-right ml-2"></i>
         </a>
@@ -184,7 +184,7 @@
     <!-- Kontak -->
     <section id="kontak" class="py-16 bg-gray-50 mt-12">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div data-aos="fade-up" class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hubungi Kami</h2>
                 <div class="w-24 h-1 bg-[#3b82f6] mx-auto mb-6"></div>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -193,7 +193,7 @@
             </div>
 
             <div class="flex flex-col lg:flex-row">
-                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                <div data-aos="fade-left" class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
                     <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
 
                     <div class="space-y-6 mb-10">
@@ -251,7 +251,7 @@
                     </div>
                 </div>
 
-                <div class="lg:w-1/2">
+                <div data-aos="fade-right" class="lg:w-1/2">
                     <form class="bg-white p-8 rounded-xl shadow-lg">
                         <div class="mb-6">
                             <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>

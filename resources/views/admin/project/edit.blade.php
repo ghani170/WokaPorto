@@ -17,9 +17,8 @@
             <div class="mb-5">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Title Project</label>
 
-                <input type="text" name="title" value="{{ old('title', $project->title) }}"
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                <input type="text" name="title" value="{{ old('title', $project->title) }}" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
 
                 @error('title')
                     <small class="text-red-600">{{ $message }}</small>
@@ -30,9 +29,8 @@
             <div class="mb-5">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Link Project</label>
 
-                <input type="url" name="link_project" value="{{ old('link_project', $project->link_project) }}"
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                <input type="url" name="link_project" value="{{ old('link_project', $project->link_project) }}" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
 
                 @error('link_project')
                     <small class="text-red-600">{{ $message }}</small>
@@ -45,7 +43,7 @@
 
                 <textarea name="description" rows="5"
                     class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">{{ old('description', $project->description) }}</textarea>
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">{{ old('description', $project->description) }}</textarea>
 
                 @error('description')
                     <small class="text-red-600">{{ $message }}</small>
@@ -61,7 +59,7 @@
                 @endif
 
                 <input type="file" name="thumbnail" accept="image/*" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
 
                 @error('thumbnail')
                     <small class="text-red-600">{{ $message }}</small>
@@ -83,7 +81,7 @@
                     @foreach($selectedResources as $id)
                         <div class="flex gap-2">
                             <select name="resource_ids[]" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
                                 <option value="">Pilih Resource</option>
                                 @foreach($resources as $resource)
                                     <option value="{{ $resource->id }}" {{ $id == $resource->id ? 'selected' : '' }}>
@@ -104,6 +102,11 @@
                 @error('resource_ids')
                     <small class="text-red-600 mt-1 block">{{ $message }}</small>
                 @enderror
+
+                @error('resource_ids.*')
+                    <small class="text-red-600 mt-1 block">{{ $message }}</small>
+                @enderror
+
             </div>
 
             {{-- 6. Layanan --}}
@@ -111,7 +114,7 @@
                 <label class="block text-sm font-medium text-gray-700 mb-2">Layanan</label>
 
                 <select name="layanan_id" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
                     <option value="">Pilih Layanan</option>
                     @foreach($layanans as $layanan)
                         <option value="{{ $layanan->id }}" {{ old('layanan_id', $project->layanan_id) == $layanan->id ? 'selected' : '' }}>
@@ -128,14 +131,14 @@
             {{-- Button --}}
             <div class="flex items-center gap-4 border-t pt-5 mt-5">
                 <button type="submit" class="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg 
-                    hover:bg-blue-700 transition duration-150 shadow-md">
-                        <i class="fa-solid fa-save mr-1"></i> Update Project
-                    </button>
+                        hover:bg-blue-700 transition duration-150 shadow-md">
+                    <i class="fa-solid fa-save mr-1"></i> Update Project
+                </button>
 
                 <a href="{{ route('admin.project.index') }}" class="px-6 py-2.5 border border-gray-400 rounded-lg text-gray-700 
-                    hover:bg-gray-100 transition duration-150">
-                        Batal / Kembali
-                    </a>
+                        hover:bg-gray-100 transition duration-150">
+                    Batal / Kembali
+                </a>
             </div>
 
         </form>
@@ -149,18 +152,18 @@
             div.classList.add('flex', 'gap-2');
 
             div.innerHTML = `
-            <select name="resource_ids[]" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
-                <option value="">Pilih Resource</option>
-                @foreach($resources as $resource)
-                    <option value="{{ $resource->id }}">{{ $resource->name_resource }}</option>
-                @endforeach
-            </select>
+                <select name="resource_ids[]" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    <option value="">Pilih Resource</option>
+                    @foreach($resources as $resource)
+                        <option value="{{ $resource->id }}">{{ $resource->name_resource }}</option>
+                    @endforeach
+                </select>
 
-            <button type="button"
-                onclick="this.parentElement.remove()"
-                class="px-3 text-red-600">✕</button>
-        `;
+                <button type="button"
+                    onclick="this.parentElement.remove()"
+                    class="px-3 text-red-600">✕</button>
+            `;
 
             wrapper.appendChild(div);
         }
