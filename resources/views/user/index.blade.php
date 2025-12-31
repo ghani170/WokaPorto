@@ -107,21 +107,26 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <!-- Layanan 1 -->
-                <div data-aos="fade-left" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                    <div class="bg-[#3b82f6]/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-code text-[#3b82f6] text-2xl"></i>
+                 @foreach ($layanans as $l)
+                 <div data-aos="fade-left" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <!-- <i class="fas fa-code text-[#3b82f6] text-2xl"></i> -->
+                         <img src="{{ asset('storage/layanan_logo/' . $l->logo_layanan) }}" alt="{{ $l->nama_layanan }}"
+                            class="w-full h-full object-cover text-[#3b82f6] text-2xl" class="rounded-xl shadow-lg w-full h-auto">
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Pengembangan Web</h3>
+                    <h3 class="text-xl font-bold mb-4">{{ $l->nama_layanan }}</h3>
                     <p class="text-gray-600 mb-6">
-                        Kami mengembangkan website responsif dan modern dengan teknologi terbaru untuk bisnis Anda.
+                        {{ $l->deskripsi_layanan }}
                     </p>
                     <a href="#" class="text-[#3b82f6] font-medium hover:text-[#1e40af] transition">
                         Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
+                 @endforeach
+                
 
 
-                <!-- Layanan 3 -->
+                <!-- Layanan 3
                 <div data-aos="fade-right" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                     <div class="bg-[#3b82f6]/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-paint-brush text-[#3b82f6] text-2xl"></i>
@@ -133,7 +138,7 @@
                     <a href="#" class="text-[#3b82f6] font-medium hover:text-[#1e40af] transition">
                         Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -176,7 +181,7 @@
             </div>
     </section>
     <div data-aos="fade-right" class="text-center mt-[-20px]">
-        <a href="#" class="inline-flex items-center text-[#3b82f6] font-medium hover:text-[#1e40af] transition">
+        <a href="{{ route('show.all.portofolio') }}" class="inline-flex items-center text-[#3b82f6] font-medium hover:text-[#1e40af] transition">
             Lihat Semua Proyek <i class="fas fa-arrow-right ml-2"></i>
         </a>
     </div>
@@ -192,11 +197,11 @@
                 </p>
             </div>
 
-            <div class="flex flex-col lg:flex-row">
+            <div class="flex flex-col justify-center items-center lg:flex-row">
                 <div data-aos="fade-left" class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
-                    <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
+                    <h3 class="text-2xl font-bold mb-6 text-center">Informasi Kontak</h3>
 
-                    <div class="space-y-6 mb-10">
+                    <div class="space-y-6 mb-10 mx-auto w-fit">
                         <div class="flex items-start">
                             <div class="bg-[#3b82f6]/10 p-3 rounded-full mr-4">
                                 <i class="fas fa-map-marker-alt text-[#3b82f6]"></i>
@@ -228,8 +233,8 @@
                         </div>
                     </div>
 
-                    <div>
-                        <h4 class="font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="mx-auto w-fit">
+                        <h4 class="font-semibold mb-4 text-center">Ikuti Kami</h4>
                         <div class="flex space-x-4">
                             <a href="#"
                                 class="bg-[#3b82f6] text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#1e40af] transition">
@@ -251,35 +256,7 @@
                     </div>
                 </div>
 
-                <div data-aos="fade-right" class="lg:w-1/2">
-                    <form class="bg-white p-8 rounded-xl shadow-lg">
-                        <div class="mb-6">
-                            <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
-                            <input type="text" id="nama"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                placeholder="Masukkan nama lengkap Anda">
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                            <input type="email" id="email"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                placeholder="Masukkan alamat email">
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="pesan" class="block text-gray-700 font-medium mb-2">Pesan</label>
-                            <textarea id="pesan" rows="5"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                placeholder="Tulis pesan Anda di sini..."></textarea>
-                        </div>
-
-                        <button type="submit"
-                            class="w-full bg-[#3b82f6] text-white py-3 rounded-lg font-medium hover:bg-[#1e40af] transition shadow-md">
-                            Kirim Pesan
-                        </button>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </section>

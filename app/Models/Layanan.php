@@ -9,6 +9,7 @@ class Layanan extends Model
     protected $fillable = [
         'nama_layanan',
         'deskripsi_layanan',
+        'logo_layanan',
     ];
 
     public function projects()

@@ -13,9 +13,6 @@ class Resource extends Model
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class, 'project_resource');
+        return $this->belongsToMany(Project::class, 'project_resources');
     }
-
-
-
 }

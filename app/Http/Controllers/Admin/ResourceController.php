@@ -78,7 +78,13 @@ class ResourceController extends Controller
      */
     public function destroy(Resource $resource)
     {
+        // Cek apakah ada project yang menggunakan resource ini di tabel pivot
+        if ($resource->projects()->exists()) {
+            return redirect()->route('admin.resource.index')->with('error', 'Resource tidak dapat dihapus karena memiliki project terkait');
+        }
+
         $resource->delete();
+
         return redirect()->route('admin.resource.index')->with('success', 'Resource berhasil dihapus');
     }
 }

@@ -103,7 +103,7 @@
                     @empty
                         <tr>
                             <td colspan="6" class="px-6 py-4 text-center text-gray-500 italic">
-                                Belum ada data Project yang tersedia.
+                                Belum ada data Resource yang tersedia.
                             </td>
                         </tr>
                     @endforelse

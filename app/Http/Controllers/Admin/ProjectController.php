@@ -111,7 +111,7 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'layanan_id' => 'required|exists:layanans,id',
-            'status' => 'required|in:active,expired',
+            'status' => 'active',
             'resource_ids' => 'required|array|min:1',
             'resource_ids.*' => 'required|exists:resources,id|distinct',
         ],

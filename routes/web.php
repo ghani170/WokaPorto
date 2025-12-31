@@ -17,6 +17,7 @@ route::post('/login', [AuthController::class, 'login'])->name('login');
 
 route::get('/home', [PortoController::class, 'index'])->name('home');
 route::get('/show/portofolio/{id}', [PortoController::class, 'show'])->name('show.portofolio');
+route::get('/show/all-portofolio', [PortoController::class, 'showAll'])->name('show.all.portofolio');
 
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
