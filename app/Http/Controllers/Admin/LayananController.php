@@ -38,11 +38,8 @@ class LayananController extends Controller
         ]);
         if ($request->hasFile('logo_layanan')) {
             $logo = $request->file('logo_layanan');
-
-            // Gunakan hashName() untuk nama unik otomatis yang lebih aman
             $logoName = $logo->hashName();
 
-            // Simpan file
             $logo->storeAs('layanan_logo', $logoName, 'public');
         }
 

@@ -19,7 +19,7 @@
                 <div class="lg:col-span-2 space-y-12">
 
                     <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
-                        <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}"
+                        <img src="{{ asset('storage/projects/' . $project->thumbnail) }}" alt="{{ $project->title }}"
                             class="w-full h-full object-cover" class="rounded-xl shadow-lg w-full h-auto">
                     </div>
 

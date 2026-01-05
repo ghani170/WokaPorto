@@ -40,8 +40,9 @@
             <div class="mb-5">
                 <label for="logo_layanan" class="block text-sm font-medium text-gray-700 mb-2">Logo Layanan</label>
 
-                <input type="file" name="logo_layanan" id="logo_layanan" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                <input type="file" name="logo_layanan" id="logo_layanan" class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 
+                    file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-semibold
+                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                     placeholder="Jelaskan detail layanan ini...">{{ old('deskripsi_layanan') }}</input>
 
                 @error('logo_layanan')
@@ -55,10 +56,10 @@
             <div class="flex items-center gap-4 border-t pt-5 mt-5">
                 <button type="submit" class="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg 
                             hover:bg-blue-700 transition duration-150 shadow-md">
-                    <i class="fa-solid fa-save mr-1"></i> Simpan Project
+                    <i class="fa-solid fa-save mr-1"></i> Simpan Layanan
                 </button>
 
-                <a href="{{ route('admin.resource.index') }}" class="px-6 py-2.5 border border-gray-400 rounded-lg text-gray-700 
+                <a href="{{ route('admin.layanan.index') }}" class="px-6 py-2.5 border border-gray-400 rounded-lg text-gray-700 
                             hover:bg-gray-100 transition duration-150">
                     Batal / Kembali
                 </a>

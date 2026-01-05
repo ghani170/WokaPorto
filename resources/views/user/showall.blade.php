@@ -7,7 +7,7 @@
         @foreach ($project as $p)
             <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <div class="h-56 bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                    <img src="{{ asset('storage/' . $p->thumbnail) }}" alt="{{ $p->title }}" class="w-full h-full object-cover">
+                    <img src="{{ asset('storage/projects/' . $p->thumbnail) }}" alt="{{ $p->title }}" class="w-full h-full object-cover">
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">{{ $p->title }}</h3>

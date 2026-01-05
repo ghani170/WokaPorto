@@ -72,19 +72,10 @@
                     </div>
 
                     <div class="flex items-center space-x-4">
-                        <div class="hidden md:flex items-center space-x-2 bg-white rounded-full px-4 py-2 shadow-sm">
-                            <i class="fas fa-search text-gray-400"></i>
-                            <input type="text" placeholder="Search..." class="outline-none bg-transparent">
-                        </div>
-
-                        <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
-                            <i class="fas fa-moon text-gray-700"></i>
-                        </button>
-
                         <div class="relative">
                             <button class="flex items-center space-x-2">
                                 <div
-                                    class="w-10 h-10 bg-linier-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-bold">
+                                    class="w-10 h-10 bg-linier-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-black font-bold">
                                     JD
                                 </div>
                                 <span class="hidden md:inline font-medium">John Doe</span>

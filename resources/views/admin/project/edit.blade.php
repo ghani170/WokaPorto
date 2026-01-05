@@ -52,18 +52,23 @@
 
             {{-- 4. Thumbnail --}}
             <div class="mb-6">
+                @if($project->thumbnail)
+                    <div class="mb-3">
+                        <p class="text-sm text-gray-600 mb-2">Gambar Saat Ini</p>
+                        <img src="{{ asset('storage/projects/' . $project->thumbnail) }}"
+                            class="w-40 rounded-lg shadow">
+                    </div>
+                @endif
                 <label class="block text-sm font-medium text-gray-700 mb-2">Thumbnail</label>
 
-                @if($project->thumbnail)
-                    <img src="{{ asset('storage/' . $project->thumbnail) }}" class="w-32 mb-2 rounded-lg">
-                @endif
-
-                <input type="file" name="thumbnail" accept="image/*" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                <input type="file" name="thumbnail" id="thumbnail" accept="image/*" class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 
+                    file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-semibold
+                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
 
                 @error('thumbnail')
                     <small class="text-red-600">{{ $message }}</small>
                 @enderror
+                <img id="preview" class="hidden w-40 rounded-lg shadow-md mt-2">
             </div>
 
             {{-- 5. Resource --}}
@@ -142,6 +147,16 @@
 
         </form>
     </div>
+    <script>
+    document.getElementById('thumbnail').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const preview = document.getElementById('preview');
+            preview.src = URL.createObjectURL(file);
+            preview.classList.remove('hidden');
+        }
+    });
+</script>
 
     <script>
         function addResource() {

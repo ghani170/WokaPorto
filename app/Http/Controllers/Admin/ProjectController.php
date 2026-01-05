@@ -52,17 +52,18 @@ class ProjectController extends Controller
                 ->withInput();
         }
 
-        $thumbnailPath = null;
-        if ($request->hasFile('thumbnail')) {
-            $thumbnailPath = $request->file('thumbnail')
-                ->store('projects', 'public');
+       if ($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $logoName = $thumbnail->hashName();
+            
+            $thumbnail->storeAs('projects', $logoName, 'public');
         }
 
         $project = Project::create([
             'title' => $request->title,
             'link_project' => $request->link_project,
             'description' => $request->description,
-            'thumbnail' => $thumbnailPath,
+            'thumbnail' => $logoName,
             'status' => 'active',
             'layanan_id' => $request->layanan_id,
         ]);
@@ -111,33 +112,47 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'layanan_id' => 'required|exists:layanans,id',
-            'status' => 'active',
             'resource_ids' => 'required|array|min:1',
             'resource_ids.*' => 'required|exists:resources,id|distinct',
-        ],
-        [
+        ], [
             'resource_ids.*.distinct' => 'Resource tidak boleh sama',
-        ]
-        );
+        ]);
 
-        if ($request->hasFile('thumbnail')) {
-            $project->thumbnail = $request->file('thumbnail')
-                ->store('projects', 'public');
-        }
-
-        $project->update([
+        // ✅ Inisialisasi data
+        $data = [
             'title' => $request->title,
             'link_project' => $request->link_project,
             'description' => $request->description,
             'layanan_id' => $request->layanan_id,
-        ]);
+        ];
 
+        // ✅ Upload thumbnail jika ada
+        if ($request->hasFile('thumbnail')) {
+            $folder = 'projects';
+
+            // hapus thumbnail lama
+            if ($project->thumbnail && Storage::disk('public')->exists($folder . '/' . $project->thumbnail)) {
+                Storage::disk('public')->delete($folder . '/' . $project->thumbnail);
+            }
+
+            $gambar = $request->file('thumbnail');
+            $namaGambar = time() . '.' . $gambar->getClientOriginalExtension();
+            $gambar->storeAs($folder, $namaGambar, 'public');
+
+            $data['thumbnail'] = $namaGambar;
+        }
+
+        // ✅ Update sekali saja
+        $project->update($data);
+
+        // ✅ Sync resource
         $project->resources()->sync($request->resource_ids);
 
         return redirect()
             ->route('admin.project.index')
             ->with('success', 'Project berhasil diperbarui');
     }
+
 
 
     /**

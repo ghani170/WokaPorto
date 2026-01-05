@@ -19,7 +19,8 @@
             <label class="block text-sm font-medium mb-2">Nama Layanan</label>
             <input type="text" name="nama_layanan"
                 value="{{ old('nama_layanan', $layanan->nama_layanan) }}"
-                class="w-full border rounded-lg px-4 py-2.5">
+                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
+                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
 
             @error('nama_layanan')
                 <small class="text-red-600">{{ $message }}</small>
@@ -30,7 +31,8 @@
         <div class="mb-5">
             <label class="block text-sm font-medium mb-2">Deskripsi Layanan</label>
             <textarea name="deskripsi_layanan" rows="4"
-                class="w-full border rounded-lg px-4 py-2.5">{{ old('deskripsi_layanan', $layanan->deskripsi_layanan) }}</textarea>
+                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
+                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">{{ old('deskripsi_layanan', $layanan->deskripsi_layanan) }}</textarea>
 
             @error('deskripsi_layanan')
                 <small class="text-red-600">{{ $message }}</small>
@@ -50,7 +52,9 @@
         <div class="mb-5">
             <label class="block text-sm font-medium mb-2">Ganti Gambar (Opsional)</label>
             <input type="file" name="logo_layanan" id="logo_layanan" accept="image/*"
-                class="w-full border rounded-lg px-4 py-2.5">
+                class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 
+                    file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-semibold
+                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
 
             @error('logo_layanan')
                 <small class="text-red-600">{{ $message }}</small>
@@ -61,14 +65,15 @@
 
         {{-- Button --}}
         <div class="flex gap-4 border-t pt-5">
-            <button class="bg-blue-600 text-white px-6 py-2.5 rounded-lg">
-                Update Layanan
+            <button class="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg 
+                            hover:bg-blue-700 transition duration-150 shadow-md">
+                <i class="fa-solid fa-save mr-1"></i> Update Layanan
             </button>
-            <a href="{{ route('admin.layanan.index') }}"
-               class="px-6 py-2.5 border rounded-lg">
-                Batal
-            </a>
-        </div>
+            <a href="{{ route('admin.layanan.index') }}" class="px-6 py-2.5 border border-gray-400 rounded-lg text-gray-700 
+                            hover:bg-gray-100 transition duration-150">
+                    Batal / Kembali
+                </a>
+        </div>  
     </form>
 
 </div>

@@ -17,7 +17,7 @@
                 <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title Project</label>
 
                 <input type="text" name="title" id="title" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
                     value="{{ old('title') }}" placeholder="Contoh: Aplikasi E-commerce XYZ">
 
                 @error('title')
@@ -30,7 +30,7 @@
                 <label for="link_project" class="block text-sm font-medium text-gray-700 mb-2">Link Project</label>
 
                 <input type="url" name="link_project" id="link_project" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
                     placeholder="https://contoh.com/project" value="{{ old('link_project') }}">
 
                 @error('link_project')
@@ -43,7 +43,7 @@
                 <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
 
                 <textarea name="description" id="description" rows="5" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
                     placeholder="Jelaskan detail proyek ini...">{{ old('description') }}</textarea>
 
                 @error('description')
@@ -56,12 +56,13 @@
                 <label for="thumbnail" class="block text-sm font-medium text-gray-700 mb-2">Thumbnail (Gambar)</label>
 
                 <input type="file" name="thumbnail" id="thumbnail" accept="image/*" class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 
-                    file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-semibold
-                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-semibold
+                        file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
 
                 @error('thumbnail')
                     <small class="text-red-600 mt-1 block">{{ $message }}</small>
                 @enderror
+                <img id="preview" class="hidden w-40 rounded-lg shadow-md mt-2">
             </div>
 
             <div class="mb-5">
@@ -96,7 +97,8 @@
                     @isset($layanans)
                         @foreach($layanans as $layanan)
                             <option value="{{ $layanan->id }}" {{ old('layanan_id') == $layanan->id ? 'selected' : '' }}>
-                                {{ $layanan->nama_layanan }}</option>
+                                {{ $layanan->nama_layanan }}
+                            </option>
                         @endforeach
                     @endisset
                 </select>
@@ -109,12 +111,12 @@
             {{-- Bagian Tombol Aksi --}}
             <div class="flex items-center gap-4 border-t pt-5 mt-5">
                 <button type="submit" class="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg 
-                    hover:bg-blue-700 transition duration-150 shadow-md">
+                        hover:bg-blue-700 transition duration-150 shadow-md">
                     <i class="fa-solid fa-save mr-1"></i> Simpan Project
                 </button>
 
                 <a href="{{ route('admin.project.index') }}" class="px-6 py-2.5 border border-gray-400 rounded-lg text-gray-700 
-                    hover:bg-gray-100 transition duration-150">
+                        hover:bg-gray-100 transition duration-150">
                     Batal / Kembali
                 </a>
             </div>
@@ -123,27 +125,38 @@
 
     </div>
 
-<script>
-function addResource() {
-    const wrapper = document.getElementById('resource-wrapper');
+    <script>
+        document.getElementById('thumbnail').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const preview = document.getElementById('preview');
+                preview.src = URL.createObjectURL(file);
+                preview.classList.remove('hidden');
+            }
+        });
+    </script>
 
-    const div = document.createElement('div');
-    div.classList.add('flex', 'gap-2');
+    <script>
+        function addResource() {
+            const wrapper = document.getElementById('resource-wrapper');
 
-    div.innerHTML = `
-        <select name="resource_ids[]" class="flex-1 border border-gray-300 rounded-lg px-4 py-2.5">
-            <option value="">Pilih Resource</option>
-            @foreach($resources as $resource)
-                <option value="{{ $resource->id }}">{{ $resource->name_resource }}</option>
-            @endforeach
-        </select>
+            const div = document.createElement('div');
+            div.classList.add('flex', 'gap-2');
 
-        <button type="button" onclick="this.parentElement.remove()"
-            class="px-3 text-red-600">✕</button>
-    `;
+            div.innerHTML = `
+            <select name="resource_ids[]" class="flex-1 border border-gray-300 rounded-lg px-4 py-2.5">
+                <option value="">Pilih Resource</option>
+                @foreach($resources as $resource)
+                    <option value="{{ $resource->id }}">{{ $resource->name_resource }}</option>
+                @endforeach
+            </select>
 
-    wrapper.appendChild(div);
-}
-</script>
+            <button type="button" onclick="this.parentElement.remove()"
+                class="px-3 text-red-600">✕</button>
+        `;
+
+            wrapper.appendChild(div);
+        }
+    </script>
 
 @endsection
